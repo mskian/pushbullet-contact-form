@@ -1,4 +1,4 @@
-# pushbullet Contact Form
+# Pushbullet Contact Form
 
 PHP Contact Form with Pushbullet Notification 📨
 
