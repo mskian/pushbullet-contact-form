@@ -20,7 +20,7 @@ PHP Contact Form with Pushbullet Notification 📨
 composer install
 ```
 
-- Create `env` file
+- Create `.env` file
 
 ```bash
 touch .env
