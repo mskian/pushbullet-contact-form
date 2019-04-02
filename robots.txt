@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /vendor/
+Disallow: /.env
+Disallow: .env
+Disallow: /composer.json
+Disallow: /composer.lock
+Disallow: /.gitignore
+Disallow: .gitignore
