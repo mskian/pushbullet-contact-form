@@ -53,18 +53,18 @@ $data = array(
   "type"=> "note"
   );
 
-$data_string = json_encode($data); 
+$data_string = json_encode($data);
 
 $url = $APIURL;
 
 $headers = array(
   'Access-Token: ' . $APIKEY,
   'Content-Type: application/json; charset=utf-8'
-);  
+);
 
-$ch = curl_init();  
-curl_setopt($ch, CURLOPT_URL, $url);                                                                 
-curl_setopt($ch, CURLOPT_POST, 1);  
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);                                                      
+curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
 curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
 curl_setopt( $ch,CURLOPT_POSTFIELDS, $data_string);
