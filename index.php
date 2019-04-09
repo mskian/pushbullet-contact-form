@@ -57,8 +57,7 @@ $data_string = json_encode($data);
 
 $url = $APIURL;
 
-$headers = array
-(
+$headers = array(
   'Access-Token: ' . $APIKEY,
   'Content-Type: application/json; charset=utf-8'
 );  
