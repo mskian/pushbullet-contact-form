@@ -5,7 +5,7 @@ ini_set("session.cookie_secure", "True");
 
 ################################################################
 #                                                              #
-# PHP Contact Form with PUshbullet Notification                #
+# PHP Script to Send Push Notifications From Pushbullet        #
 # Author: Santhosh Veer (https://santhoshveer.com)             #
 #                                                              #
 ################################################################
@@ -73,20 +73,28 @@ curl_setopt( $ch,CURLOPT_POSTFIELDS, $data_string);
 $result = curl_exec($ch);
 $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-if($code == 401){
-  $message = '<div class="alert alert-warning text-center"><strong>No valid access token provided</strong></div>';
-}else{
-if ($code == 403) {
-    $message = '<div class="alert alert-warning text-center"><strong>The access token is not valid</strong></div>';
-}else{
-  if ($code == 400) {
-    $message = '<div class="alert alert-warning text-center"><strong>Bad Request - missing a required parameter</strong></div>';
-}else{
-    $message = '<div class="alert alert-success text-center"><strong>Your Message was Submitted</strong>.</div>';
-  }
- }
-}
 curl_close ($ch);
+
+switch ($code) {
+  case "200":
+      echo "<div class='alert alert-success text-center'><strong>your message was submitted successfully</strong></div>";
+      break;
+  case "400":
+      echo "<div class='alert alert-warning text-center'><strong>Bad Request - missing a required parameter</strong></div>";
+      break;
+  case "401":
+      echo "<div class='alert alert-warning text-center'><strong>No valid access token provided</strong></div>";
+      break;
+  case "403":
+      echo "<div class='alert alert-warning text-center'><strong>The access token is not valid</strong></div>";
+      break;
+  case "404":
+      echo "<div class='alert alert-warning text-center'><strong>API URL Not Found</strong></div>";
+      break;
+  default:
+      echo "<div class='alert alert-warning text-center'><strong>Hmm Something Went Wrong or HTTP Status Code is Missing</strong></div>";
+}
+
  }
 }
 
@@ -298,18 +306,6 @@ pre code *{
 </div>
 </div>
 
-<div class="container">
-<div class="row">
-<div class="col-lg-6 col-lg-offset-3 mx-auto">
-<?php
-if(isset($_POST['name'])) {
-echo $message;
-}
-?>
-</div>
-</div>
-</div>
-<br />
 <br />
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
