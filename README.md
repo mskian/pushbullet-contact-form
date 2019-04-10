@@ -8,6 +8,7 @@ PHP Contact Form with Pushbullet Notification 📨
 - ParsleyJS Form Validation
 - PHP cURL
 - CSRF Token
+- User IP
 - Pushbullet API (For Sending the User Submit Notification to Pushbullet)
 
 ### Usage
